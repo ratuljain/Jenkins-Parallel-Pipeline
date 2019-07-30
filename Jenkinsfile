@@ -34,7 +34,8 @@ pipeline {
                     }
                 }
             }
-        },
+        }
+
         stage ("Stage2") {
           agent { label "build" }
           steps {
