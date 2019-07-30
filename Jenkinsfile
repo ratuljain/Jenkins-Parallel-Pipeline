@@ -7,7 +7,7 @@ pipeline {
         stage ("Stage1") {
             parallel {
                 stage ("parallel1") {
-                    agent { label "build" }
+                    agent { label "master" }
                     stages {
                         stage ("parallel1 stage1") {
                             steps {
@@ -23,7 +23,7 @@ pipeline {
                 }
 
                 stage ("parallel2") {
-                    agent { label "build" }
+                    agent { label "master" }
 
                     stages {
                         stage ("parallel2stage1") {
@@ -37,7 +37,7 @@ pipeline {
         }
 
         stage ("Stage2") {
-          agent { label "build" }
+          agent { label "master" }
           steps {
             echo "Hello in stage2"
           }
