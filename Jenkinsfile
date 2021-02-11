@@ -12,7 +12,7 @@ pipeline {
                                 echo "Hello in parallel1 stage1"
                             }
                         }
-                        stage ("smc:configerator.tumbleweed.paiwei") {
+                        stage ("smc:configerator.tumbleweed.rajain") {
                             steps {
                                 echo "Hello in parallel1 stage2"
                             }
@@ -44,7 +44,7 @@ pipeline {
                                 echo "Hello in parallel1 stage1"
                             }
                         }
-                        stage ("smc:configerator.tumbleweed.paiwei") {
+                        stage ("smc:configerator.tumbleweed.rajain") {
                             steps {
                                 echo "Hello in parallel1 stage2"
                             }
@@ -76,7 +76,7 @@ pipeline {
                                 echo "Hello in parallel1 stage1"
                             }
                         }
-                        stage ("smc:configerator.tumbleweed.paiwei") {
+                        stage ("smc:configerator.tumbleweed.rajain") {
                             steps {
                                 echo "Hello in parallel1 stage2"
                             }
