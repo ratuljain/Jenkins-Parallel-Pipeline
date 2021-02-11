@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage ("Detemine Targets") {
+        stage ("HealthCheck") {
             parallel {
                 stage ("PushPhase 1") {
                     agent { label "master" }
