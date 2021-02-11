@@ -30,13 +30,17 @@ pipeline {
         }
 
         stage ("HealthCheck") {
+            failFast true
             parallel {
                 stage ("P1") {
                     agent { label "master" }
                     stages {
                         stage ("smc:configerator.tumbleweed.paiwei") {
                             steps {
-                                echo "Hello in parallel1 stage1"
+                                echo "HealthCheck Started"
+                                script {
+                                    throw new Exception("HealthCheck Failed!")
+                                }
                             }
                         }
                     }
