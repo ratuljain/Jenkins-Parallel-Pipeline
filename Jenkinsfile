@@ -1,20 +1,18 @@
-#!groovy
-
 pipeline {
     agent none
 
     stages {
-        stage ("Stage1") {
+        stage ("Detemine Targets") {
             parallel {
-                stage ("parallel1") {
+                stage ("PushPhase 1") {
                     agent { label "master" }
                     stages {
-                        stage ("parallel1 stage1") {
+                        stage ("smc:configerator.tumbleweed.paiwei") {
                             steps {
                                 echo "Hello in parallel1 stage1"
                             }
                         }
-                        stage ("parallel1 stage2") {
+                        stage ("smc:configerator.tumbleweed.paiwei") {
                             steps {
                                 echo "Hello in parallel1 stage2"
                             }
@@ -22,7 +20,7 @@ pipeline {
                     }
                 }
 
-                stage ("parallel2") {
+                stage ("PushPhase 2") {
                     agent { label "master" }
 
                     stages {
@@ -36,11 +34,100 @@ pipeline {
             }
         }
 
-        stage ("Stage2") {
-          agent { label "master" }
-          steps {
-            echo "Hello in stage2"
-          }
+        stage ("PreHealthCheckAction") {
+            parallel {
+                stage ("PushPhase 1") {
+                    agent { label "master" }
+                    stages {
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage1"
+                            }
+                        }
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage2"
+                            }
+                        }
+                    }
+                }
+
+                stage ("PushPhase 2") {
+                    agent { label "master" }
+
+                    stages {
+                        stage ("parallel2stage1") {
+                            steps {
+                                echo "Hello in parallel2stage1"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage ("PushOverrideAction") {
+            parallel {
+                stage ("PushPhase 1") {
+                    agent { label "master" }
+                    stages {
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage1"
+                            }
+                        }
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage2"
+                            }
+                        }
+                    }
+                }
+
+                stage ("PushPhase 2") {
+                    agent { label "master" }
+
+                    stages {
+                        stage ("parallel2stage1") {
+                            steps {
+                                echo "Hello in parallel2stage1"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage ("BakeAction") {
+            parallel {
+                stage ("PushPhase 1") {
+                    agent { label "master" }
+                    stages {
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage1"
+                            }
+                        }
+                        stage ("smc:configerator.tumbleweed.paiwei") {
+                            steps {
+                                echo "Hello in parallel1 stage2"
+                            }
+                        }
+                    }
+                }
+
+                stage ("PushPhase 2") {
+                    agent { label "master" }
+
+                    stages {
+                        stage ("parallel2stage1") {
+                            steps {
+                                echo "Hello in parallel2stage1"
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
